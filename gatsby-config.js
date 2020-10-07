@@ -1,6 +1,4 @@
-import dotenv from 'dotenv'
-
-dotenv.config();
+require('dotenv').config()
 
 const {
   CONTENTFUL_SPACE_ID,
