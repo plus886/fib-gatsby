@@ -1,3 +1,13 @@
+import dotenv from 'dotenv'
+
+dotenv.config();
+
+const {
+  CONTENTFUL_SPACE_ID,
+  CONTENTFUL_ACCESS_TOKEN,
+  CONTENTFUL_HOST,
+} = process.env;
+
 module.exports = {
   siteMetadata: {
     title: `Novela by Narative`,
@@ -40,8 +50,8 @@ module.exports = {
         basePath: "/",
         authorsPage: true,
         sources: {
-          local: true,
-          // contentful: true,
+          // local: true,
+          contentful: true,
         },
       },
     },
@@ -62,5 +72,14 @@ module.exports = {
       options: {
       },
     },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: CONTENTFUL_SPACE_ID,
+        accessToken: CONTENTFUL_ACCESS_TOKEN,
+        host: CONTENTFUL_HOST,
+        environment: 'master',
+      },
+    }
   ],
 };
