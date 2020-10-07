@@ -41,12 +41,20 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: CONTENTFUL_SPACE_ID,
+        accessToken: CONTENTFUL_ACCESS_TOKEN,
+        host: CONTENTFUL_HOST,
+        environment: 'master',
+      },
+    },
+    {
       resolve: "@narative/gatsby-theme-novela",
       options: {
         contentPosts: "content/posts",
         contentAuthors: "content/authors",
         basePath: "/",
-        authorsPage: true,
         sources: {
           // local: true,
           contentful: true,
@@ -68,15 +76,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-netlify-cms`,
       options: {
-      },
-    },
-    {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: CONTENTFUL_SPACE_ID,
-        accessToken: CONTENTFUL_ACCESS_TOKEN,
-        host: CONTENTFUL_HOST,
-        environment: 'master',
       },
     }
   ],
